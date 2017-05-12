@@ -7,6 +7,9 @@ using Cappta.ProjetoBiblioteca.Produtos;
 using Cappta.ProjetoBiblioteca.Pessoas;
 using Cappta.ProjetoBiblioteca;
 
+
+//TODO TIRAR OS METODOS QUE SÓ UTILIZAM CLIENTE E COLOCAR NA CLASSE CLIENTE
+
 namespace Cappta.ProjetoBiblioteca.Controlers
 {
     class ControleAluguel

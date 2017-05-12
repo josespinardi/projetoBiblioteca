@@ -35,6 +35,8 @@ namespace Cappta.ProjetoBiblioteca.Controlers
             estoqueDaBiblioteca.Add(produto);
         }
 
+        //CADASTRAR PROCUTO NO LUGAR CERTO!!
+        //SEM COESAO CRESCE A CADA NOVO PRODUTO!!
         public static bool CadastrarProdutoLivro(ProdutoDTO produto)
         {
             var item = new Livro(produto.Titulo, produto.Autor, produto.AnoDePublicacao);
@@ -79,6 +81,7 @@ namespace Cappta.ProjetoBiblioteca.Controlers
             return estoqueDaBiblioteca[index];
         }
 
+        //ISSO PRECISA ESTAR AQUI?
         public static bool VerificarAnoDeLancamento(int ano)
         {
             if (ano >= anoLimiteParaCompra)

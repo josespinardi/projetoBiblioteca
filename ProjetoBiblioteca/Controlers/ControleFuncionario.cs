@@ -28,6 +28,8 @@ namespace Cappta.ProjetoBiblioteca.Controlers
             return funcionariosCadastrados;
         }
 
+        //CADASTRAR FUNCIONARIO NO LUGAR CERTO!!
+        //SEM COESAO CRESCE A CADA NOVO PRODUTO!!
         public static bool CadastrarUsuarioBibliotecario(CadastroPessoaTDO cadastro)
         {
             var funcionario = CriarUsuarioBibliotecario(cadastro);

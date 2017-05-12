@@ -20,6 +20,8 @@ namespace Cappta.ProjetoBiblioteca.Controlers
             return ConsultarClienteCadatrado(cliente);
         }
 
+
+        //TODO COLOCAR METODO NA CLASSE CLIENTE
         public static Cliente CriarUsuarioCliente(CadastroPessoaTDO cadastro)
         {
             return new Cliente(cadastro.Nome, cadastro.Cpf, cadastro.Email);
@@ -38,7 +40,7 @@ namespace Cappta.ProjetoBiblioteca.Controlers
             return false;
         }
 
-        public static void RemoverClienteo(Cliente cliente)
+        public static void RemoverCliente(Cliente cliente)
         {
             clientesCadastrados.Remove(cliente);
         }
