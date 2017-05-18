@@ -13,68 +13,8 @@ namespace Cappta.ProjetoBiblioteca.Controlers
     class ControleEstoque 
     {
         const int anoLimiteParaCompra = 2010;
-        private static ControleEstoque instance;
-        private static List<Produto> estoqueDaBiblioteca = new List<Produto>();
 
-        private ControleEstoque() { }
-
-        public static ControleEstoque Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new ControleEstoque();
-                }
-                return instance;
-            }
-        }
-
-        public static void AdicionarItem(Produto produto)
-        {
-            estoqueDaBiblioteca.Add(produto);
-        }
-
-        //CADASTRAR PROCUTO NO LUGAR CERTO!!
-        //SEM COESAO CRESCE A CADA NOVO PRODUTO!!
-        public static bool CadastrarProdutoLivro(ProdutoDTO produto)
-        {
-            var item = new Livro(produto.Titulo, produto.Autor, produto.AnoDePublicacao);
-            AdicionarItem(item);
-            return ConsultarItemCadatrado(item);
-        }
-
-        public static bool CadastrarProdutoDvd(ProdutoDTO produto)
-        {
-            var item = new Dvd(produto.Titulo, produto.Autor, produto.AnoDePublicacao);
-            AdicionarItem(item);
-            return ConsultarItemCadatrado(item);
-        }
-
-        public static bool CadastrarProdutoRevista(ProdutoDTO produto)
-        {
-            var item =  new Revista(produto.Titulo, produto.Autor, produto.AnoDePublicacao);
-            AdicionarItem(item);
-            return ConsultarItemCadatrado(item);
-        }
-
-        public static bool ConsultarItemCadatrado(Produto produto)
-        {
-            if (estoqueDaBiblioteca.Contains(produto))
-                return true;
-
-            return false;
-        }
-
-        public static void RemoverItem(Produto produto)
-        {
-            estoqueDaBiblioteca.Remove(produto);
-        }
-
-        public static List<Produto> ListarItens()
-        {
-            return estoqueDaBiblioteca;
-        }
+        //colocar logica de acesso no dbfake
 
         public static Produto LocalizarProdudoPorIndice(int index)
         {

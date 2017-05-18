@@ -8,7 +8,6 @@ using Cappta.ProjetoBiblioteca.Controlers;
 using ProjetoBiblioteca;
 using Cappta.ProjetoBiblioteca;
 
-
 namespace Cappta.ProjetoBiblioteca.Pessoas
 {
     abstract class Funcionario : Pessoa
@@ -17,12 +16,12 @@ namespace Cappta.ProjetoBiblioteca.Pessoas
         public int Id { get; private set; }
         public string Senha { get;  set; }
         
-        public Funcionario (string nome, string cpf, string email, string senha)
+        public Funcionario (CadastroPessoaTDO cadastro)
         {
-            this.Nome = nome;
-            this.Cpf = cpf;
-            base.Email = email;
-            this.Senha = senha;
+            this.Nome = cadastro.Nome;
+            this.Cpf = cadastro.Cpf;
+            base.Email = cadastro.Email;
+            this.Senha = cadastro.Senha;
             AtualizaIdFuncionario();
             this.Id = idFuncionario;
         }
@@ -40,7 +39,7 @@ namespace Cappta.ProjetoBiblioteca.Pessoas
 
         public bool AgendarItem(AgendamentoDTO agendamento)
         {
-            Locacao locacao = new Locacao(agendamento.cliente, agendamento.produto, agendamento.data);
+            Locacao locacao = new Locacao(agendamento.Cliente, agendamento.Produto, agendamento.Data);
             return ControleAluguel.AdicionarItem(locacao); 
         }
 

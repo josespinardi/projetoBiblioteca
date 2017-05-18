@@ -34,10 +34,10 @@ namespace Cappta.ProjetoBiblioteca
             Mensagem = "";
             foreach (Locacao locacao in itensLocados)
             {
-                Mensagem += (" Título: " + locacao.getProduto() +
-                            "\n Cliente: " + locacao.getCliente() +
-                            "\n Data de agendamento: " + locacao.getDataLocacao() +
-                            "\n Data de devolução: " + locacao.getDataDevolucao() +
+                Mensagem += (" Título: " + locacao.Produto +
+                            "\n Cliente: " + locacao.Cliente +
+                            "\n Data de agendamento: " + locacao.DataLocacao +
+                            "\n Data de devolução: " + locacao.DataDevolucao +
                             "\n\n");
             }
             return Mensagem;
@@ -48,9 +48,9 @@ namespace Cappta.ProjetoBiblioteca
             Mensagem = "";
             foreach (Locacao locacao in itensAgendados)
             {
-                Mensagem += (" Título: " + locacao.getProduto() +
-                            "\n Cliente: " + locacao.getCliente() +
-                            "\n Data de agendamento: " + locacao.getDataLocacao() +
+                Mensagem += (" Título: " + locacao.Produto +
+                            "\n Cliente: " + locacao.Cliente +
+                            "\n Data de agendamento: " + locacao.DataLocacao +
                             "\n\n");
             }
             return Mensagem;

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cappta.ProjetoBiblioteca.Produtos;
 using Cappta.ProjetoBiblioteca.Controlers;
+using Cappta.ProjetoBiblioteca;
 
 namespace Cappta.ProjetoBiblioteca.Pessoas
 {
@@ -15,11 +16,11 @@ namespace Cappta.ProjetoBiblioteca.Pessoas
         private List<Produto> produtosComprados = new List<Produto>();
         private static int idCliente = 0;
 
-        public Cliente(String nome, string cpf, string email)
+        public Cliente(CadastroPessoaTDO cadastro)
         {
-            this.Nome = nome;
-            this.Cpf = cpf;
-            base.Email = email;
+            this.Nome = cadastro.Nome;
+            this.Cpf = cadastro.Cpf;
+            base.Email = cadastro.Email;
             AtualizaIdCliente();
             this.Id = idCliente;
 
@@ -40,12 +41,66 @@ namespace Cappta.ProjetoBiblioteca.Pessoas
             return produtosComprados;
         }
 
+
+        /// <summary>
+        /// ////////////////
+        /// </summary>
+        /// <returns></returns>
+
         public bool PodeFazerLocacao()
         {
             if(ControleAluguel.ContarAlugueisPorCliente(this) < numeroMaximoDeLocacoes)
                 return true;
 
             return false;
+        }
+
+        public Cliente CriarUsuarioCLiente(CadastroPessoaTDO cadastro)
+        {
+            return new Cliente(cadastro);
+        }
+
+        public static List<Locacao> ListarItensAlugadosPorCliente(Cliente cliente)
+        {
+            List<Locacao> alugueisDoCliente = new List<Locacao>();
+
+            CriarListaDeItensDoCliente(cliente, alugueisDoCliente);
+
+            return alugueisDoCliente;
+        }
+
+        public static int ContarAlugueisPorCliente(Cliente cliente)
+        {
+            List<Locacao> locacaoDoCliente = ListarItensAlugadosPorCliente(cliente);
+
+            return locacaoDoCliente.Count;
+        }
+
+        public static List<Locacao> ListarItensAgendadosPorCliente(Cliente cliente)
+        {
+            var alugueisDoCliente = new List<Locacao>();
+
+            CriarListaDeItensDoCliente(cliente, alugueisDoCliente);
+
+            return alugueisDoCliente;
+        }
+
+        public static List<Locacao> ListarItensEmAtrasoPorCliente(Cliente cliente)
+        {
+            var atrasosDoCliente = new List<Locacao>();
+
+            CriarListaDeItensDoCliente(cliente, atrasosDoCliente);
+
+            return atrasosDoCliente;
+        }
+
+        private static void CriarListaDeItensDoCliente(Cliente cliente, List<Locacao> alugueisDoCliente)
+        {
+            foreach (Locacao aluguel in ListarItensAlugados())
+            {
+                if (aluguel.Cliente == cliente)
+                    alugueisDoCliente.Add(aluguel);
+            }
         }
 
     }

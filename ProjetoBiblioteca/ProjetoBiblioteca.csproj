@@ -49,6 +49,15 @@
     <Compile Include="CadastroPessoaTDO.cs" />
     <Compile Include="Controlers\ControleClientes.cs" />
     <Compile Include="Controlers\ControleFuncionario.cs" />
+    <Compile Include="DBFake\EstoqueDBFake.cs" />
+    <Compile Include="Controlers\ListaDeAgendamento.cs" />
+    <Compile Include="Controlers\ListaDeAtraso.cs" />
+    <Compile Include="Controlers\ListaDeLocacao.cs" />
+    <Compile Include="Controlers\ListarItens.cs" />
+    <Compile Include="DBFake\ClientesDBFake.cs" />
+    <Compile Include="DBFake\FuncionariosDBFake.cs" />
+    <Compile Include="DBFake\IDBFake.cs" />
+    <Compile Include="DBFake\ItensLocadosDBFake.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="InicializadorDeDados.cs" />
     <Compile Include="Locacao.cs" />

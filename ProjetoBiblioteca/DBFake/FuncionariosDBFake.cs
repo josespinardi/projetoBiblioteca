@@ -1,0 +1,29 @@
+﻿using Cappta.ProjetoBiblioteca.Pessoas;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Cappta.ProjetoBiblioteca.DBFake
+{
+    class FuncionariosDBFake : IDBFake
+    {
+        private static List<Funcionario> funcionariosCadastrados = new List<Funcionario>();
+
+        public void AdicionarItem(Funcionario funcionario)
+        {
+            funcionariosCadastrados.Add(funcionario);
+        }
+
+        public void RemoverItem(Funcionario funcionario)
+        {
+            funcionariosCadastrados.Remove(funcionario);
+        }
+
+        List<Funcionario> ListarItens()
+        {
+            return funcionariosCadastrados;
+        }
+    }
+}

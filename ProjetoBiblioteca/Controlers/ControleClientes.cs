@@ -11,44 +11,8 @@ namespace Cappta.ProjetoBiblioteca.Controlers
 {
     class ControleClientes
     {
-        private static List<Cliente> clientesCadastrados = new List<Cliente>();
 
-        public static bool CadastrarCliente(CadastroPessoaTDO cadastro)
-        {
-            var cliente = CriarUsuarioCliente(cadastro);
-            AdicionarCliente(cliente);
-            return ConsultarClienteCadatrado(cliente);
-        }
-
-
-        //TODO COLOCAR METODO NA CLASSE CLIENTE
-        public static Cliente CriarUsuarioCliente(CadastroPessoaTDO cadastro)
-        {
-            return new Cliente(cadastro.Nome, cadastro.Cpf, cadastro.Email);
-        }
-
-        public static void AdicionarCliente(Cliente cliente)
-        {
-            clientesCadastrados.Add(cliente);
-        }
-
-        public static bool ConsultarClienteCadatrado(Cliente cliente)
-        {
-            if (clientesCadastrados.Contains(cliente))
-                return true;
-
-            return false;
-        }
-
-        public static void RemoverCliente(Cliente cliente)
-        {
-            clientesCadastrados.Remove(cliente);
-        }
-
-        public static List<Cliente> ListarClientes()
-        {
-            return clientesCadastrados;
-        }
+        //colocar logica de acesso no dbfake
 
         public static Cliente LocalizarClientePorIndice(int index)
         {

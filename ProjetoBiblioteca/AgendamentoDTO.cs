@@ -10,15 +10,15 @@ namespace ProjetoBiblioteca
 {
     class AgendamentoDTO
     {
-        public Produto produto;
-        public DateTime data;
-        public Cliente cliente;
+        public Produto Produto { get; protected set; }
+        public DateTime Data { get; protected set; }
+        public Cliente Cliente { get; protected set; }
 
         public AgendamentoDTO(Produto produto, DateTime data, Cliente cliente)
         {
-            this.produto = produto;
-            this.data = data;
-            this.cliente = cliente;
+            this.Produto = produto;
+            this.Data = data;
+            this.Cliente = cliente;
         }
     }
 }

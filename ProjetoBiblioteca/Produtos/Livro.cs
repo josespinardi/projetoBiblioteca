@@ -12,16 +12,11 @@ namespace Cappta.ProjetoBiblioteca.Produtos
 {
     class Livro : Produto
     {
-        public Livro(string titulo, string autor, int anoDePublicacao)
+        public Livro(ProdutoDTO produto) : base(produto) { }
+
+        public override Produto CriarProduto(ProdutoDTO produto)
         {
-            base.Titulo = titulo;
-            base.AnoDePublicacao = anoDePublicacao;
-            base.Autor = autor;
+            return new Livro(produto);
         }
-        
-        public DateTime VerificaDataDeDevolucao()
-        {
-            return DataDeLocacao.AddDays(7);
-        } 
     }
 }
