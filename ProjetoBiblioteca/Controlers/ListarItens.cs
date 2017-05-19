@@ -1,11 +1,12 @@
 ﻿using Cappta.ProjetoBiblioteca;
+using Cappta.ProjetoBiblioteca.Pessoas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetoBiblioteca.Controlers
+namespace Cappta.ProjetoBiblioteca.Controlers
 {
     abstract class ListaItens
     {
@@ -15,5 +16,6 @@ namespace ProjetoBiblioteca.Controlers
         }
 
         protected abstract bool condicaoVerdadeira(Locacao locacao);
+        public abstract List<Locacao> ListarLocacoesDoCliente(Cliente cliente);
     }
 }

@@ -11,17 +11,17 @@ namespace Cappta.ProjetoBiblioteca.DBFake
     {
         private static List<Funcionario> funcionariosCadastrados = new List<Funcionario>();
 
-        public void AdicionarItem(Funcionario funcionario)
+        public void Adicionar(Funcionario funcionario)
         {
             funcionariosCadastrados.Add(funcionario);
         }
 
-        public void RemoverItem(Funcionario funcionario)
+        public void Remover(Funcionario funcionario)
         {
             funcionariosCadastrados.Remove(funcionario);
         }
 
-        List<Funcionario> ListarItens()
+        public List<Funcionario> ListarItens()
         {
             return funcionariosCadastrados;
         }

@@ -59,6 +59,11 @@
     <Compile Include="DBFake\IDBFake.cs" />
     <Compile Include="DBFake\ItensLocadosDBFake.cs" />
     <Compile Include="Email.cs" />
+    <Compile Include="Enum\FuncionarioEnum.cs" />
+    <Compile Include="Enum\ProdutoEnum.cs" />
+    <Compile Include="Factories\ClienteFactory.cs" />
+    <Compile Include="Factories\FuncionarioFactory.cs" />
+    <Compile Include="Factories\ProdutoFactory.cs" />
     <Compile Include="InicializadorDeDados.cs" />
     <Compile Include="Locacao.cs" />
     <Compile Include="Controlers\AutenticacaoLogin.cs" />

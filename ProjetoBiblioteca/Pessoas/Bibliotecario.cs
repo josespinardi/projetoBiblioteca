@@ -14,14 +14,20 @@ namespace Cappta.ProjetoBiblioteca.Pessoas
     {
         public Bibliotecario(CadastroPessoaTDO cadastro) : base(cadastro) { }
 
-        public override bool AlugarItem(Locacao produto)
+        public override bool AlugarItem(Cliente cliente, Produto produto)
         {
-            return ControleAluguel.AdicionarItem(produto); 
+            if (!TemPermissaoParaAlugar(produto))
+            {
+                return new ControleAluguel().AlugarItem(new Locacao(cliente, produto));
+            }
+            return false;
         }
 
-        public Bibliotecario CriarFuncionarioBibliotecario(CadastroPessoaTDO cadastro)
+        private bool TemPermissaoParaAlugar(Produto produto)
         {
-            return new Bibliotecario(cadastro);
+            if(produto is Livro) { return false; }
+
+            return true;
         }
     }
 }

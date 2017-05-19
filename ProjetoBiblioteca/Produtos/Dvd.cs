@@ -11,9 +11,5 @@ namespace Cappta.ProjetoBiblioteca.Produtos
     {
         public Dvd(ProdutoDTO produto) : base(produto) { }
 
-        public override Produto CriarProduto(ProdutoDTO produto)
-        {
-            return new Dvd(produto);
-        }
     }
 }

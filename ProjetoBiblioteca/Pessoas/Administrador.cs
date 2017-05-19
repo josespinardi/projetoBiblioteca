@@ -14,9 +14,10 @@ namespace Cappta.ProjetoBiblioteca.Pessoas
     {
         public Administrador (CadastroPessoaTDO cadastro) : base(cadastro) { }
 
-    public override bool AlugarItem (Locacao produto)
+        public override bool AlugarItem(Cliente cliente, Produto produto)
         {
-            return ControleAluguel.AdicionarItem(produto);
+            return new ControleAluguel().AlugarItem(new Locacao(cliente, produto));
+
         }
 
         public bool VenderItem(Produto produto, Cliente cliente)

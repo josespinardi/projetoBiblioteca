@@ -11,17 +11,17 @@ namespace Cappta.ProjetoBiblioteca.DBFake
     {
         private static List<Cliente> clientesCadastrados = new List<Cliente>();
 
-        public void AdicionarItem(Cliente cliente)
+        public void Adicionar(Cliente cliente)
         {
             clientesCadastrados.Add(cliente);
         }
 
-        public void RemoverItem(Cliente cliente)
+        public void Remover(Cliente cliente)
         {
             clientesCadastrados.Remove(cliente);
         }
 
-        List<Cliente> ListarItens()
+        public List<Cliente> ListarItens()
         {
             return clientesCadastrados;
         }

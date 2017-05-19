@@ -26,12 +26,6 @@ namespace Cappta.ProjetoBiblioteca.Pessoas
             this.Id = idFuncionario;
         }
 
-        public Funcionario(string email, string senha)
-        {
-            base.Email = email;
-            this.Senha = senha;
-        }
-
         private void AtualizaIdFuncionario()
         {
             idFuncionario++;
@@ -40,22 +34,14 @@ namespace Cappta.ProjetoBiblioteca.Pessoas
         public bool AgendarItem(AgendamentoDTO agendamento)
         {
             Locacao locacao = new Locacao(agendamento.Cliente, agendamento.Produto, agendamento.Data);
-            return ControleAluguel.AdicionarItem(locacao); 
+            return new ControleAluguel().AgendarItem(locacao);
         }
 
-        public abstract bool AlugarItem(Locacao produto);
+        public abstract bool AlugarItem(Cliente cliente, Produto produto);
 
         internal bool TemUmLoginValido(LoginDTO login)
         {
             return this.Email == login.Email && this.Senha == login.Senha;
-        }
-
-        public bool CompararDataDeAgendamento(DateTime agendamento)
-        {
-            if (agendamento > DateTime.Now)
-                return true;
-            
-            return false;
         }
     }
 }

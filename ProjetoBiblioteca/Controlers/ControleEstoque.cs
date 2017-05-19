@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Cappta.ProjetoBiblioteca.Produtos;
 using Cappta.ProjetoBiblioteca.Pessoas;
 using Cappta.ProjetoBiblioteca;
-
+using ProjetoBiblioteca.Enum;
+using Cappta.ProjetoBiblioteca.Factories;
+using Cappta.ProjetoBiblioteca.DBFake;
 
 namespace Cappta.ProjetoBiblioteca.Controlers
 {
@@ -14,20 +16,28 @@ namespace Cappta.ProjetoBiblioteca.Controlers
     {
         const int anoLimiteParaCompra = 2010;
 
-        //colocar logica de acesso no dbfake
-
-        public static Produto LocalizarProdudoPorIndice(int index)
+        public void CriarItemNoEstoque(ProdutoEnum tipo, ProdutoDTO item)
         {
-            return estoqueDaBiblioteca[index];
+            if (ItemPodeSerComprado(item))
+            {
+                Produto produto = new ProdutoFactory().CriarProduto(tipo, item);
+                EstoqueDBFake controleDB = new EstoqueDBFake();
+                controleDB.AdicionarItem(produto);
+            }
+            else { throw new Exception(); }
         }
 
-        //ISSO PRECISA ESTAR AQUI?
-        public static bool VerificarAnoDeLancamento(int ano)
+        private bool ItemPodeSerComprado(ProdutoDTO item)
         {
-            if (ano >= anoLimiteParaCompra)
+            if (item.AnoDePublicacao >= anoLimiteParaCompra)
                 return true;
-            
+
             return false;
         }
+
+
+
+
+        
     }
 }

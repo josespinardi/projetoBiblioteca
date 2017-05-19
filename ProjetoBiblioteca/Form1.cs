@@ -268,17 +268,14 @@ namespace ProjetoBiblioteca
             string cpf = textBoxCpfCadastro.Text;
             string email = textBoxEmailCadastro.Text;
             string senha = textBoxSenhaCadastro.Text;
+            
             CadastroPessoaTDO cadastro = new CadastroPessoaTDO(nome, cpf, email, senha);
 
-            //TODO melhorar esse controle
             if (nome != "" && cpf != "" && email != "")
             {
-                if (radioButtonCliente.Checked)
-                    ControleClientes.CadastrarCliente(cadastro);
+                if (radioButtonCliente.Checked) { new ControleClientes().CriarCliente(cadastro); }
                 else if (radioButtonAdministrador.Checked)
                     ControleFuncionario.CadastrarUsuarioAdministrador(cadastro);
-                else
-                    ControleFuncionario.CadastrarUsuarioBibliotecario(cadastro);
             }
             else
                 MessageBox.Show("Digitar os campos");

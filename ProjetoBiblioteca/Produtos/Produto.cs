@@ -23,11 +23,21 @@ namespace Cappta.ProjetoBiblioteca.Produtos
             this.Autor = produto.Autor;
         }
 
+        public bool EstaDisponivel()
+        {
+            return true;
+        }
+
         public override string ToString()
         {
             return this.Titulo;
         }
 
-        public abstract Produto CriarProduto(ProdutoDTO produto);
+        //TODO IMPLEMENTAR ESSE METODO
+        public bool EstaDisponivelNaData()
+        {
+            return true;
+        }
+
     }
 }

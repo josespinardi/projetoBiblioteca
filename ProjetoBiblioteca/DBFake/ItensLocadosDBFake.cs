@@ -10,17 +10,17 @@ namespace Cappta.ProjetoBiblioteca.DBFake
     {
         private static List<Locacao> ItensLocados = new List<Locacao>();
 
-        public void AdicionarItem(Locacao locacao)
+        public void Adicionar(Locacao locacao)
         {
             ItensLocados.Add(locacao);
         }
 
-        public void RemoverItem(Locacao locacao)
+        public void Remover(Locacao locacao)
         {
             ItensLocados.Remove(locacao);
         }
 
-        List<Locacao> ListarItens()
+        public List<Locacao> ListarItens()
         {
             return ItensLocados;
         }

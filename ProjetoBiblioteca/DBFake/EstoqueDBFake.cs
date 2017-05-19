@@ -21,7 +21,7 @@ namespace Cappta.ProjetoBiblioteca.DBFake
             estoqueDaBiblioteca.Remove(produto);
         }
 
-        List<Produto> ListarItens()
+        public List<Produto> ListarItens()
         {
             return estoqueDaBiblioteca;
         }
