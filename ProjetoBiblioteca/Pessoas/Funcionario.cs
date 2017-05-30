@@ -8,7 +8,6 @@ using Cappta.ProjetoBiblioteca.Controlers;
 using ProjetoBiblioteca;
 using Cappta.ProjetoBiblioteca;
 
-
 namespace Cappta.ProjetoBiblioteca.Pessoas
 {
     abstract class Funcionario : Pessoa
@@ -17,20 +16,14 @@ namespace Cappta.ProjetoBiblioteca.Pessoas
         public int Id { get; private set; }
         public string Senha { get;  set; }
         
-        public Funcionario (string nome, string cpf, string email, string senha)
+        public Funcionario (CadastroPessoaTDO cadastro)
         {
-            this.Nome = nome;
-            this.Cpf = cpf;
-            base.Email = email;
-            this.Senha = senha;
+            this.Nome = cadastro.Nome;
+            this.Cpf = cadastro.Cpf;
+            base.Email = cadastro.Email;
+            this.Senha = cadastro.Senha;
             AtualizaIdFuncionario();
             this.Id = idFuncionario;
-        }
-
-        public Funcionario(string email, string senha)
-        {
-            base.Email = email;
-            this.Senha = senha;
         }
 
         private void AtualizaIdFuncionario()
@@ -40,23 +33,15 @@ namespace Cappta.ProjetoBiblioteca.Pessoas
 
         public bool AgendarItem(AgendamentoDTO agendamento)
         {
-            Locacao locacao = new Locacao(agendamento.cliente, agendamento.produto, agendamento.data);
-            return ControleAluguel.AdicionarItem(locacao); 
+            Locacao locacao = new Locacao(agendamento.Cliente, agendamento.Produto, agendamento.Data);
+            return new ControleAluguel().AgendarItem(locacao);
         }
 
-        public abstract bool AlugarItem(Locacao produto);
+        public abstract bool AlugarItem(Cliente cliente, Produto produto);
 
         internal bool TemUmLoginValido(LoginDTO login)
         {
             return this.Email == login.Email && this.Senha == login.Senha;
-        }
-
-        public bool CompararDataDeAgendamento(DateTime agendamento)
-        {
-            if (agendamento > DateTime.Now)
-                return true;
-            
-            return false;
         }
     }
 }

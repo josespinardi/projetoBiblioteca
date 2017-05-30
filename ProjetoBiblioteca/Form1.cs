@@ -268,17 +268,14 @@ namespace ProjetoBiblioteca
             string cpf = textBoxCpfCadastro.Text;
             string email = textBoxEmailCadastro.Text;
             string senha = textBoxSenhaCadastro.Text;
+            
             CadastroPessoaTDO cadastro = new CadastroPessoaTDO(nome, cpf, email, senha);
 
-            //TODO melhorar esse controle
             if (nome != "" && cpf != "" && email != "")
             {
-                if (radioButtonCliente.Checked)
-                    ControleClientes.CadastrarCliente(cadastro);
+                if (radioButtonCliente.Checked) { new ControleClientes().CriarCliente(cadastro); }
                 else if (radioButtonAdministrador.Checked)
                     ControleFuncionario.CadastrarUsuarioAdministrador(cadastro);
-                else
-                    ControleFuncionario.CadastrarUsuarioBibliotecario(cadastro);
             }
             else
                 MessageBox.Show("Digitar os campos");
@@ -314,15 +311,20 @@ namespace ProjetoBiblioteca
             string autor = textBoxCadastroProdutoAutor.Text;
             int ano = Convert.ToInt32(textBoxCadastroProdutoAno.Text);
             ProdutoDTO itemParaCadastro = new ProdutoDTO(titulo, ano, autor);
+            Produto produto;
 
             if (ControleEstoque.VerificarAnoDeLancamento(Convert.ToInt32(textBoxCadastroProdutoAno.Text)))
             {
                 if (radioButtonLivro.Checked)
-                    ControleEstoque.CadastrarProdutoLivro(itemParaCadastro);
+                {
+                    
+                }
                 else if (radioButtonRevista.Checked)
-                    ControleEstoque.CadastrarProdutoRevista(itemParaCadastro);
+                {
+
+                }
                 else
-                    ControleEstoque.CadastrarProdutoDvd(itemParaCadastro);
+
                 
                 AtualizarComboBoxItens();
             }
@@ -330,6 +332,7 @@ namespace ProjetoBiblioteca
             {
                 MessageBox.Show("Protudo muito antigo");
             }
+
             textBoxCadastroProdutoTitulo.Text = "";
             textBoxCadastroProdutoAutor.Text = "";
             textBoxCadastroProdutoAno.Text = "";

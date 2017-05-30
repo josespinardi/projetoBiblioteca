@@ -12,44 +12,24 @@ namespace Cappta.ProjetoBiblioteca
     class Locacao
     {
         const int LIMITE_DE_DIAS_PARA_AGENDAR = 7;
-        private Cliente cliente;
-        private Produto produto;
-        private DateTime dataLocacao;
-        private DateTime dataDevolucao;
+        public Cliente Cliente { get; private set; }
+        public Produto Produto { get; private set; }
+        public DateTime DataLocacao { get; private set; }
+        public DateTime DataDevolucao { get; private set; }
 
         public Locacao(Cliente cliente, Produto produto)
         {
-            this.cliente = cliente;
-            this.produto = produto;
-            this.dataLocacao = DateTime.Now;
-            dataDevolucao = dataLocacao.AddDays(LIMITE_DE_DIAS_PARA_AGENDAR);
+            this.Cliente = cliente;
+            this.Produto = produto;
+            this.DataLocacao = DateTime.Now;
+            DataDevolucao = DataLocacao.AddDays(LIMITE_DE_DIAS_PARA_AGENDAR);
         }
 
         public Locacao(Cliente cliente, Produto produto, DateTime agendamento)
         {
-            this.cliente = cliente;
-            this.produto = produto;
-            this.dataLocacao = agendamento;
-        }
-
-        public Cliente getCliente()
-        {
-            return cliente;
-        }
-
-        public Produto getProduto()
-        {
-            return produto;
-        }
-
-        public DateTime getDataLocacao()
-        {
-            return dataLocacao;
-        }
-
-        public DateTime getDataDevolucao()
-        {
-            return dataDevolucao;
+            this.Cliente = cliente;
+            this.Produto = produto;
+            this.DataLocacao = agendamento;
         }
     }
 }

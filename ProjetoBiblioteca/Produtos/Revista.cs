@@ -4,16 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cappta.ProjetoBiblioteca.Controlers;
+using Cappta.ProjetoBiblioteca;
 
 namespace Cappta.ProjetoBiblioteca.Produtos
 {
     class Revista : Produto
     {
-        public Revista(string titulo, string autor, int anoDePublicacao)
-        {
-            base.Titulo = titulo;
-            base.AnoDePublicacao = anoDePublicacao;
-            base.Autor = autor;
-        }
+        public Revista(ProdutoDTO produto) : base(produto) { }
+
     }
 }

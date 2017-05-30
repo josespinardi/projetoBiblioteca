@@ -5,22 +5,39 @@ using System.Text;
 using System.Threading.Tasks;
 using Cappta.ProjetoBiblioteca.Pessoas;
 using Cappta.ProjetoBiblioteca.Controlers;
+using Cappta.ProjetoBiblioteca;
 
 namespace Cappta.ProjetoBiblioteca.Produtos
 {
     abstract class Produto
     {
+        const int prazoMaximoDeDevolucao = 7;
         public string Titulo { get; protected set; }
         public int AnoDePublicacao { get; protected set; }
         public string Autor { get; protected set; }
-        public Cliente Locador { get; set; }
-        public DateTime DataDeLocacao { get; set; }
-        public Cliente AgendadoPara { get; set; }
-        public DateTime DataDeAgendamento { get; set; }
+
+        public Produto(ProdutoDTO produto)
+        {
+            this.Titulo = produto.Titulo;
+            this.AnoDePublicacao = produto.AnoDePublicacao;
+            this.Autor = produto.Autor;
+        }
+
+        public bool EstaDisponivel()
+        {
+            return true;
+        }
 
         public override string ToString()
         {
             return this.Titulo;
         }
+
+        //TODO IMPLEMENTAR ESSE METODO
+        public bool EstaDisponivelNaData()
+        {
+            return true;
+        }
+
     }
 }

@@ -5,17 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using Cappta.ProjetoBiblioteca.Produtos;
 using Cappta.ProjetoBiblioteca.Controlers;
+using Cappta.ProjetoBiblioteca;
 
 
 namespace Cappta.ProjetoBiblioteca.Pessoas
 {
     class Bibliotecario : Funcionario
     {
-        public Bibliotecario(string nome, string cpf, string email, string senha) : base(nome, cpf, email, senha) { }
+        public Bibliotecario(CadastroPessoaTDO cadastro) : base(cadastro) { }
 
-        public override bool AlugarItem(Locacao produto)
+        public override bool AlugarItem(Cliente cliente, Produto produto)
         {
-            return ControleAluguel.AdicionarItem(produto); 
+            if (!TemPermissaoParaAlugar(produto))
+            {
+                return new ControleAluguel().AlugarItem(new Locacao(cliente, produto));
+            }
+            return false;
+        }
+
+        private bool TemPermissaoParaAlugar(Produto produto)
+        {
+            if(produto is Livro) { return false; }
+
+            return true;
         }
     }
 }

@@ -9,11 +9,7 @@ namespace Cappta.ProjetoBiblioteca.Produtos
 {
     class Dvd : Produto
     {
-        public Dvd(string titulo, string autor, int anoDePublicacao)
-        {
-            base.Titulo = titulo;
-            base.AnoDePublicacao = anoDePublicacao;
-            base.Autor = autor;
-        }
+        public Dvd(ProdutoDTO produto) : base(produto) { }
+
     }
 }

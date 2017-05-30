@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cappta.ProjetoBiblioteca.Produtos;
 using Cappta.ProjetoBiblioteca.Controlers;
+using Cappta.ProjetoBiblioteca;
 
 namespace Cappta.ProjetoBiblioteca.Pessoas
 {
@@ -12,17 +13,19 @@ namespace Cappta.ProjetoBiblioteca.Pessoas
     {
         const int numeroMaximoDeLocacoes = 2;
         public int Id { get; private set; }
+        public int TotalDeLocacoes { get; private set; }
         private List<Produto> produtosComprados = new List<Produto>();
         private static int idCliente = 0;
 
-        public Cliente(String nome, string cpf, string email)
+        public Cliente(CadastroPessoaTDO cadastro)
         {
-            this.Nome = nome;
-            this.Cpf = cpf;
-            base.Email = email;
+            this.Nome = cadastro.Nome;
+            this.Cpf = cadastro.Cpf;
+            this.TotalDeLocacoes = 0;
+            base.Email = cadastro.Email;
+
             AtualizaIdCliente();
             this.Id = idCliente;
-
         }
 
         private void AtualizaIdCliente()
@@ -42,13 +45,20 @@ namespace Cappta.ProjetoBiblioteca.Pessoas
 
         public bool PodeFazerLocacao()
         {
-            if(ControleAluguel.ContarAlugueisPorCliente(this) < numeroMaximoDeLocacoes)
-                return true;
+            if (TotalDeLocacoes < numeroMaximoDeLocacoes) { return true; }
 
             return false;
         }
 
-    }
+        public void AdicionarLocacaoTotal() { this.TotalDeLocacoes++; }
 
-    
+        public void RemoverLocacaoTotal() { this.TotalDeLocacoes--; }
+
+        public override bool Equals(object obj)
+        {
+            Cliente cliente = (Cliente)obj;
+            return this.Cpf == cliente.Cpf;
+        }
+
+    }
 }

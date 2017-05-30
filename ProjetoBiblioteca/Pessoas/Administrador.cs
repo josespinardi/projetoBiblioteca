@@ -12,17 +12,23 @@ namespace Cappta.ProjetoBiblioteca.Pessoas
 {
     class Administrador : Funcionario
     {
-        public Administrador(string nome, string cpf, string email, string senha) : base(nome, cpf, email, senha) { }
+        public Administrador (CadastroPessoaTDO cadastro) : base(cadastro) { }
 
-        public override bool AlugarItem (Locacao produto)
+        public override bool AlugarItem(Cliente cliente, Produto produto)
         {
-            return ControleAluguel.AdicionarItem(produto);
+            return new ControleAluguel().AlugarItem(new Locacao(cliente, produto));
+
         }
 
         public bool VenderItem(Produto produto, Cliente cliente)
         {
             cliente.AdicionarLivroComprado(produto);
             return true;
+        }
+
+        public Administrador CriarFuncionarioAdministrador(CadastroPessoaTDO cadastro)
+        {
+            return new Administrador(cadastro);
         }
     }
 }
